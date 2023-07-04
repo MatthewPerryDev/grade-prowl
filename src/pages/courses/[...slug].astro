@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/layout.astro";
+import AveragesTable  from "../../components/AveragesTable.svelte";
+import DetailedTable  from "../../components/DetailedTable.svelte";
+
+import TestLineChart from "../../components/CourseGraph.svelte";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const courses = await getCollection("courses");
+  return courses.map((entry) => ({
+    params: { slug: `${entry.data.department}-${entry.data.number}` },
+    props: { entry },
+  }));
+}
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const details = entry.data.details;
+const averages = entry.data.averages;
+---
+
+<Layout>
+  <div class="flex-col gap-y-14">
+    <div class="sm:mx-0 md:mx-52 gap-x-96 pt-12">
+      {entry.data.department}
+      {entry.data.number}:
+    </div>
+    <div class="sm:mx-0 md:mx-52 gap-x-96 pt-6">
+      <TestLineChart client:only="svelte" data={averages} />
+    </div>
+    
+    <div class="sm:mx-0 md:mx-52 gap-x-96 pt-6">
+        <AveragesTable
+          client:only="svelte"
+          data={averages}
+          columns={Object.keys(details[0])}
+        />
+    </div>
+    <div class="sm:mx-0 md:mx-52 gap-x-96 pt-6">
+      <DetailedTable
+        client:only="svelte"
+        data={averages}
+        columns={Object.keys(details[0])}
+      />
+  </div>
+  </Layout>

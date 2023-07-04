@@ -10,11 +10,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^3.1.0",
     "@astrojs/tailwind": "^4.0.0",
+    "@unovis/svelte": "^1.2.0",
+    "@unovis/ts": "^1.2.0",
     "astro": "^2.7.2",
+    "layercake": "^7.6.0",
+    "svelte": "^4.0.0",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@vincjo/datatables": "^1.10.7",
     "daisyui": "^3.1.7"
   }
 }
