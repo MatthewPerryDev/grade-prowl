@@ -70,7 +70,7 @@
         )}<br/></span>`,
     };
   }
-  const margin = { top: 0, bottom: 25, left: 0, right: 0 };
+  const margin = { top: 0, bottom: 0, left: 0, right: 0 };
 </script>
 
 <svelte:window bind:innerWidth={screenSize} />

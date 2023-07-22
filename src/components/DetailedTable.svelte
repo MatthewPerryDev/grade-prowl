@@ -5,20 +5,19 @@
     import Pagination from './table/pagination.svelte';
         /** @type {import('./$types').PageData} */
     export let data;
-    export let columns;
     const handler = new DataHandler(data, { rowsPerPage: 15 })
     const rows = handler.getRows()
-    console.log(columns);
 </script>
 <header>
     <Search {handler} />
 </header>
 
-<table class="table table-zebra table-sm w-full">
+<table class="table table-zebra table-xs sm:table-md w-full">
     <thead>
         <tr>
             
-            <Th {handler} orderBy="professor">Professor</Th>
+            <Th {handler} orderBy="Instructor">Professor</Th>
+            <Th {handler} orderBy="Year">Year</Th>
             <Th {handler} orderBy="A">A</Th>
             <Th {handler} orderBy="B">B</Th>
             <Th {handler} orderBy="C">C</Th>
@@ -34,6 +33,7 @@
         {#each $rows as row}
             <tr>
                 <td>{row.Instructor}</td>
+                <td>{row.Year}</td>
                 <td>{row.A.toFixed(2)}</td>
                 <td>{row.B.toFixed(2)}</td>
                 <td>{row.C.toFixed(2)}</td>

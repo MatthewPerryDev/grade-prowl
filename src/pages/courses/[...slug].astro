@@ -17,13 +17,15 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const details = entry.data.details;
 const averages = entry.data.averages;
-//    <TestLineChart client:only="svelte" data={averages} />
-    //<Test client:only testData={averages}/>
-
 ---
 
 <Layout>
-  <div class = "self-center mx-8 md:mx-16 lg:mx-32">
-    <CourseGraph client:only="svelte" data={averages} />
+  <div class="self-center mx-8 my-8 md:mx-16 lg:mx-32 space-y-12">
+    <h class="text-2xl">{entry.data.department}-{entry.data.number}: {entry.data.title}</h>
+    <div>
+      <CourseGraph client:only="svelte" data={averages} />
+    </div>
+    <div class="overflow-x-scroll sm:overflow-hidden"><AveragesTable client:only="svelte" data={averages} /></div>
+    <div class="overflow-x-scroll sm:overflow-hidden"><DetailedTable client:only="svelte" data={details} /></div>
   </div>
 </Layout>
