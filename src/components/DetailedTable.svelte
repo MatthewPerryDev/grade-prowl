@@ -33,7 +33,7 @@
     <tbody>
         {#each $rows as row}
             <tr>
-                <td>{row.professor}</td>
+                <td>{row.Instructor}</td>
                 <td>{row.A.toFixed(2)}</td>
                 <td>{row.B.toFixed(2)}</td>
                 <td>{row.C.toFixed(2)}</td>

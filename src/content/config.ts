@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
 const averagedCourse = z.object({
-	professor: z.string(),
+	Instructor: z.string(),
 	A: z.number(),
 	B: z.number(),
 	C: z.number(),
@@ -13,11 +13,9 @@ const averagedCourse = z.object({
 });
 
 const course = z.object({
-		department: z.string(),
-		number: z.number(),
-		section: z.number(),
-		title: z.string(),
-		professor: z.string(),
+		Section: z.number(),
+		Title: z.string(),
+		Instructor: z.string(),
 		A: z.number(),
 		B: z.number(),
 		C: z.number(),
@@ -26,8 +24,8 @@ const course = z.object({
 		P: z.number(),
 		'F(P)': z.number(),
 		W: z.number(),
-		honors: z.boolean(),
-		year: z.number()
+		Honors: z.boolean(),
+		Year: z.number()
 });
 
 const courses = defineCollection({
@@ -35,6 +33,7 @@ const courses = defineCollection({
 	schema: z.object({
 		department: z.string(),
 		number: z.number(),
+		title: z.string(),
 		averages: averagedCourse.array(),
 		details: course.array()
 	})
