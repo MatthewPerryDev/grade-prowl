@@ -70,3 +70,14 @@ for (const page in pages){
   const obj = pages[page]
   writeFileSync(`./src/content/courses/${obj.department}-${obj.number}.json`,JSON.stringify(obj))
 }
+
+let searchIndex = [];
+for (const page in pages){
+  const obj = pages[page]
+  searchIndex.push({
+    fullName: `${obj.department}-${obj.number}: ${obj.title}`,
+    route: `${obj.department}-${obj.number}`
+  })
+}
+
+writeFileSync('./public/searchIndex.json',JSON.stringify(searchIndex))
