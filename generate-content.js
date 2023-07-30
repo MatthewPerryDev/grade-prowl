@@ -68,7 +68,7 @@ for (const [course, test] of courses) {
  
 for (const page in pages){
   const obj = pages[page]
-  writeFileSync(`./src/content/courses/${obj.department}-${obj.number}.json`,JSON.stringify(obj))
+  writeFileSync(join('.','src','content','courses',`${obj.department}-${obj.number}.json`),JSON.stringify(obj))
 }
 
 let searchIndex = [];
@@ -80,4 +80,4 @@ for (const page in pages){
   })
 }
 
-writeFileSync('./public/searchIndex.json',JSON.stringify(searchIndex))
+writeFileSync(join('.','public','searchIndex.json'),JSON.stringify(searchIndex))
