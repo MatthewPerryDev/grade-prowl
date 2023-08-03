@@ -1,7 +1,6 @@
-import { readFileSync, readdirSync,writeFileSync } from "fs";
+import { readFileSync, readdirSync,writeFileSync,mkdirSync } from "fs";
 import { fromCSV, op } from "arquero";
 import { extname, join,normalize } from "path";
-import { writable } from "svelte/store";
 
 async function combineCSVsInFolder(folderPath) {
   const files = readdirSync(folderPath);
@@ -68,7 +67,7 @@ for (const [course, test] of courses) {
 console.log(process.cwd());
 for (const page in pages){
   const obj = pages[page]
-   writeFileSync(normalize(`opt/buildhome/repo/src/content/courses/${obj.department}-${obj.number}.json`),JSON.stringify(obj))
+   writeFileSync(normalize(`./src/content/courses/${obj.department}-${obj.number}.json`),JSON.stringify(obj))
 }
 
 let searchIndex = [];
