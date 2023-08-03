@@ -11,28 +11,29 @@
   /** @type {import('./$types').PageData} */
   export let data;
   let screenSize;
-  let maxInstructors = 5;
+  let maxInstructors = Math.min(data.length,5);
   data = data.sort((a, b) => a.Year > b.Year);
 
-  let test = data.splice(0, maxInstructors);
+  let test = data.slice(0, maxInstructors);
 
   $: if (screenSize >=1024) {
     console.log(screenSize);
-    maxInstructors = 20;
+    maxInstructors =  Math.min(data.length,20);
   }
   
   $: if (screenSize>= 768 && screenSize <1024) {
     console.log(screenSize);
-    maxInstructors = 10;
+    maxInstructors =  Math.min(data.length,10);
   }  
   
-  $: test = data.splice(0, maxInstructors);
-  
+  $: test = data.slice(0, maxInstructors);
   const numberFormat = Intl.NumberFormat("en-US", {
     style: "percent",
     notation: "compact",
   }).format;
+  
   const tickFormat = (i) => test[i].Instructor;
+  
   const x = (prof, i) => i;
   let y = [
     (prof) => prof.A,
