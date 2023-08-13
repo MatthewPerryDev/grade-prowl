@@ -97,13 +97,4 @@
   <VisAxis label="Percentage" type="y" />
 </VisXYContainer>
 
-<style>
-  :root {
-    --vis-color0: #90d8ac;
-    --vis-color1: #b5e5c7;
-    --vis-color2: #f56600;
-    --vis-color3: #fcc4b5;
-    --vis-color4: #bcb5f9;
-    --vis-color5: #988ef4;
-  }
-</style>
+
